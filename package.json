@@ -1,0 +1,23 @@
+{
+  "name": "react-graphviz",
+  "version": "0.5.0",
+  "description": "react-graphviz is a plugin for react, the flow control rules engine, which allows react to use graphviz to generate flow diagrams for the dependencies",
+  "main": "lib/react-graphviz",
+  "author": "Jeff Barczewski <jeff.barczewski@gmail.com>",
+  "repository": { "type": "git", "url": "http://github.com/jeffbski/react-graphviz.git" },
+  "bugs" : { "url": "http://github.com/jeffbski/react-graphviz/issues" },
+  "licenses": [{ "type": "MIT", "url" : "http://github.com/jeffbski/react-graphviz/raw/master/LICENSE" }],
+  "engines": { "node": "*" },
+  "dependencies": {
+    "react": "~0.5.1",
+    "graphviz": "~0.0.3"
+  },
+  "devDependencies": {
+    "temp" : "~0.4.0",
+    "tap" : "~0.1.0",
+    "tapr" : "~0.1.0"
+  },
+  "scripts": {
+    "test": "node_modules/.bin/tapr test"
+  }
+}
