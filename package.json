@@ -10,7 +10,8 @@
   "engines": { "node": "*" },
   "dependencies": {
     "react": "~0.5.1",
-    "graphviz": "~0.0.3"
+    "graphviz": "~0.0.3",
+    "commander": "~0.5.2"
   },
   "devDependencies": {
     "temp" : "~0.4.0",

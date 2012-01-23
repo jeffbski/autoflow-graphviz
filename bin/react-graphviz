@@ -1,0 +1,35 @@
+#!/usr/bin/env node
+
+var VERSION = '0.0.1';
+
+var path = require('path');
+var prog = require('commander');
+var react = require('react');
+var reactGraphviz = require('../'); // require('react-graphviz');
+
+function list(val) {
+  return val.split(',');
+}
+
+prog
+  .version(VERSION)
+  .usage('<moduleOrJSPath ...> [options]')
+  .option('-t, --type <type>', 'type of output (png, pdf, gif, dot), default: png')
+  .option('-i, --include <flowName[,flowName,...]>', 'limit graphing to only these included flowNames', list)
+  .option('-o, --output <outDir>', 'output directory (should exist), default to cwd')
+  .parse(process.argv);
+
+
+if (!prog.args.length) { // no files specified, show help
+  process.stdout.write(prog.helpInformation());
+  prog.emit('--help');
+  process.exit(0);
+}
+
+reactGraphviz(prog);
+
+console.error('cwd:', process.cwd());
+
+prog.args.forEach(function (a) {
+  require(a);
+});
