@@ -15,8 +15,28 @@ Generate graphviz diagrams for flow definitions that:
 
 ## Installing
 
-    npm install -g react-graphviz  # installs globally
+First install the open source graphviz software if not already installed on your system. You can find all about it at http://www.graphviz.org/
+It can be downloaded or installed via a package manager.
+
+For example:
+
+```bash
+brew install graphviz  # mac OS X
+apt-get install graphviz  # ubuntu and debian linux
+```
+
+This should put graphviz binaries on your path, react-graphviz uses dot, so make sure that dot is on your path, then you can install react-graphviz.
+
+
+```bash
     npm install react-graphviz   # install locally
+```
+
+OR
+
+```bash
+    npm install -g react-graphviz  # installs globally
+```
 
 OR
 
@@ -26,10 +46,28 @@ Pull from github - http://github.com/jeffbski/react-graphviz
 ## Example
 
 ```bash
+# if you installed locally
+node_modules/.bin/react-graphviz moduleOrJSFile ... --type png --include flowName --output dir
+# OR if using globally
 react-graphviz moduleOrJSFile ... --type png --include flowName --output dir
-# OR
-node_modules/bin/react-graphviz moduleOrJSFile ... --type png --include flowName --output dir
 ```
+
+## Usage
+
+```
+  react-graphviz --help
+
+  Usage: react-graphviz <moduleOrJSPath ...> [options]
+
+  Options:
+
+    -h, --help                               output usage information
+    -V, --version                            output the version number
+    -t, --type <type>                        type of output (png, pdf, gif, dot), default: png
+    -i, --include <flowName[,flowName,...]>  limit graphing to only these included flowNames
+    -o, --output <outDir>                    output directory (should exist), default to cwd (.)
+```
+
 
 ## License
 

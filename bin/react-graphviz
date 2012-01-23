@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-var VERSION = '0.0.1';
+var VERSION = '0.5.2';
 
 var path = require('path');
 var prog = require('commander');
