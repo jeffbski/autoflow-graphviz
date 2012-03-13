@@ -52,7 +52,7 @@ Pull from github - http://github.com/jeffbski/react-graphviz
 
 ```bash
 # if you installed locally
-node_modules/.bin/react-graphviz JSFilePath
+node_modules/bin/react-graphviz JSFilePath
 # OR if using globally
 react-graphviz JSFilePath
 ```
