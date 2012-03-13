@@ -10,7 +10,7 @@
   "engines": { "node": "*" },
   "dependencies": {
     "react": "~0.5.2",
-    "graphviz": "~0.0.3",
+    "graphviz": "~0.0.5",
     "commander": "~0.5.2"
   },
   "devDependencies": {

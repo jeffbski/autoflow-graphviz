@@ -13,7 +13,7 @@ function list(val) {
 
 prog
   .version(VERSION)
-  .usage('<moduleOrJSPath ...> [options]')
+  .usage('<JSPath ...> [options]')
   .option('-t, --type <type>', 'type of output (png, pdf, gif, dot), default: png')
   .option('-i, --include <flowName[,flowName,...]>', 'limit graphing to only these included flowNames', list)
   .option('-o, --output <outDir>', 'output directory (should exist), default to cwd')
@@ -28,8 +28,6 @@ if (!prog.args.length) { // no files specified, show help
 
 reactGraphviz(prog);
 
-console.error('cwd:', process.cwd());
-
 prog.args.forEach(function (a) {
-  require(a);
+  require(path.resolve(process.cwd(), a));
 });
