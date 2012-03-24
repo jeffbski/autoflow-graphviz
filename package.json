@@ -1,6 +1,6 @@
 {
   "name": "react-graphviz",
-  "version": "0.5.4",
+  "version": "0.5.5",
   "description": "react-graphviz is a plugin for react, the flow control rules engine, which allows react to use graphviz to generate flow diagrams for the dependencies",
   "main": "lib/react-graphviz",
   "bin" : "bin/react-graphviz",
@@ -10,7 +10,7 @@
   "licenses": [{ "type": "MIT", "url" : "http://github.com/jeffbski/react-graphviz/raw/master/LICENSE" }],
   "engines": { "node": "*" },
   "dependencies": {
-    "react": "~0.5.2",
+    "react": ">=0.5.2",
     "graphviz": "~0.0.5",
     "commander": "~0.5.2",
     "temp" : "~0.4.0"
