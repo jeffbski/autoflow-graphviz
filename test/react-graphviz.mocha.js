@@ -42,14 +42,14 @@ suite('react-graphviz');
 test('generate diagram with defaults', function (done) {
   reactGraphviz();  //use all defaults
   var expectedFile = './loadRender.png';
-  if (path.existsSync(expectedFile)) fs.unlinkSync(expectedFile);
+  if (fs.existsSync(expectedFile)) fs.unlinkSync(expectedFile);
   var fn = react('loadRender', 'fooPath, barPath, barP2, cb -> err, renderedOut',
     loadFoo, 'fooPath, cb -> err, foo',
     loadBar, 'barPath, barP2, cb -> err, bar',
     render, 'foo, bar -> renderedOut'
   );
   setTimeout(function () {
-    t.ok(path.existsSync(expectedFile), 'png file should exist');
+    t.ok(fs.existsSync(expectedFile), 'png file should exist');
     fs.unlinkSync(expectedFile);
     done();
   }, 1000);
@@ -80,9 +80,9 @@ test('generate diagram for single flow using file path', function (done) {
       deliverEmail,     'custEmailHtml, cb    -> err, deliveredEmail', { after: writeOutput   }  // only after writeOutput is done
    );
     setTimeout(function () {
-      t.ok(path.existsSync(path.join(dirPath, 'loadAndSave.dot')), 'should exist');
-      t.ok(path.existsSync(path.join(dirPath, 'foo.dot')), 'should exist');
-      t.ok(!path.existsSync(path.join(dirPath, 'bar.dot')), 'should not exist');
+      t.ok(fs.existsSync(path.join(dirPath, 'loadAndSave.dot')), 'should exist');
+      t.ok(fs.existsSync(path.join(dirPath, 'foo.dot')), 'should exist');
+      t.ok(!fs.existsSync(path.join(dirPath, 'bar.dot')), 'should not exist');
       done();
     }, 1000);
   });
