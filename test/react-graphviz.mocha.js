@@ -1,7 +1,10 @@
 'use strict';
 /*jshint white: false */
+/*global react:true */
 
-var test = require('tap').test;
+var chai = require('chai');
+var t = chai.assert;
+
 var temp = require('temp');
 var path = require('path');
 var fs = require('fs');
@@ -34,8 +37,9 @@ function loadEmailTemplate(cb) { setTimeout(cb, 50, null, 'emailmd'); }
 function customizeEmail(user, emailHtml) { return 'cust-'+user+emailHtml; }
 function deliverEmail(custEmailHtml, cb) { setTimeout(cb, 100, null, 'delivered-'+custEmailHtml); }
 
-test('generate diagram with defaults', function (t) {
-  t.plan(1);
+suite('react-graphviz');
+
+test('generate diagram with defaults', function (done) {
   reactGraphviz();  //use all defaults
   var expectedFile = './loadRender.png';
   if (path.existsSync(expectedFile)) fs.unlinkSync(expectedFile);
@@ -47,12 +51,11 @@ test('generate diagram with defaults', function (t) {
   setTimeout(function () {
     t.ok(path.existsSync(expectedFile), 'png file should exist');
     fs.unlinkSync(expectedFile);
-    t.end();
+    done();
   }, 1000);
 });
 
-test('generate diagram for single flow using file path', function (t) {
-  t.plan(3);
+test('generate diagram for single flow using file path', function (done) {
   temp.mkdir('react-graphviz-test', function (err, dirPath) {
     reactGraphviz({
       type: 'dot',
@@ -61,11 +64,11 @@ test('generate diagram for single flow using file path', function (t) {
     });
     var foo = react('foo', 'a, cb -> err, b',
       loadUser, 'a, cb -> err, b'
-    );                    
+    );
     var bar = react('bar', 'a, cb -> err, b',
       loadUser, 'a, cb -> err, b'
-    );                    
-    var loadAndSave = react('loadAndSave', 'filename, uid, outDir, cb -> err, html, user, bytes',  
+    );
+    var loadAndSave = react('loadAndSave', 'filename, uid, outDir, cb -> err, html, user, bytes',
       loadUser,         'uid, cb          -> err, user',     // calling async loadUser with uid, cb called with err and user
       loadFile,         'filename, cb     -> err, filedata',
       markdown,         'filedata         -> html',    // using a sync function
@@ -80,7 +83,7 @@ test('generate diagram for single flow using file path', function (t) {
       t.ok(path.existsSync(path.join(dirPath, 'loadAndSave.dot')), 'should exist');
       t.ok(path.existsSync(path.join(dirPath, 'foo.dot')), 'should exist');
       t.ok(!path.existsSync(path.join(dirPath, 'bar.dot')), 'should not exist');
-      t.end();
-    }, 1000);    
+      done();
+    }, 1000);
   });
 });

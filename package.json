@@ -16,10 +16,10 @@
   },
   "devDependencies": {
     "temp" : "~0.4.0",
-    "tap" : "~0.1.0",
-    "tapr" : "~0.1.0"
+    "mocha": "~1.10.0",
+    "chai": "~1.6.0"
   },
   "scripts": {
-    "test": "node_modules/.bin/tapr test"
+    "test": "./node_modules/mocha/bin/mocha ./test/*.mocha.js"
   }
 }
