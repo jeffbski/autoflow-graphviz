@@ -1,6 +1,6 @@
 'use strict';
 /*jshint white: false */
-/*global react:true */
+/*global autoflow:true */
 
 var chai = require('chai');
 var t = chai.assert;
@@ -9,8 +9,8 @@ var temp = require('temp');
 var path = require('path');
 var fs = require('fs');
 
-var react = require('react');
-var reactGraphviz = require('../'); //require('react-graphviz');
+var autoflow = require('autoflow');
+var autoflowGraphviz = require('../'); //require('autoflow-graphviz');
 
 function loadFoo(fooPath, cb) {
   setTimeout(function () {
@@ -37,13 +37,13 @@ function loadEmailTemplate(cb) { setTimeout(cb, 50, null, 'emailmd'); }
 function customizeEmail(user, emailHtml) { return 'cust-'+user+emailHtml; }
 function deliverEmail(custEmailHtml, cb) { setTimeout(cb, 100, null, 'delivered-'+custEmailHtml); }
 
-suite('react-graphviz');
+suite('autoflow-graphviz');
 
 test('generate diagram with defaults', function (done) {
-  reactGraphviz();  //use all defaults
+  autoflowGraphviz();  //use all defaults
   var expectedFile = './loadRender.png';
   if (fs.existsSync(expectedFile)) fs.unlinkSync(expectedFile);
-  var fn = react('loadRender', 'fooPath, barPath, barP2, cb -> err, renderedOut',
+  var fn = autoflow('loadRender', 'fooPath, barPath, barP2, cb -> err, renderedOut',
     loadFoo, 'fooPath, cb -> err, foo',
     loadBar, 'barPath, barP2, cb -> err, bar',
     render, 'foo, bar -> renderedOut'
@@ -56,19 +56,19 @@ test('generate diagram with defaults', function (done) {
 });
 
 test('generate diagram for single flow using file path', function (done) {
-  temp.mkdir('react-graphviz-test', function (err, dirPath) {
-    reactGraphviz({
+  temp.mkdir('autoflow-graphviz-test', function (err, dirPath) {
+    autoflowGraphviz({
       type: 'dot',
       output: dirPath,
       include: ['loadAndSave', 'foo']
     });
-    var foo = react('foo', 'a, cb -> err, b',
+    var foo = autoflow('foo', 'a, cb -> err, b',
       loadUser, 'a, cb -> err, b'
     );
-    var bar = react('bar', 'a, cb -> err, b',
+    var bar = autoflow('bar', 'a, cb -> err, b',
       loadUser, 'a, cb -> err, b'
     );
-    var loadAndSave = react('loadAndSave', 'filename, uid, outDir, cb -> err, html, user, bytes',
+    var loadAndSave = autoflow('loadAndSave', 'filename, uid, outDir, cb -> err, html, user, bytes',
       loadUser,         'uid, cb          -> err, user',     // calling async loadUser with uid, cb called with err and user
       loadFile,         'filename, cb     -> err, filedata',
       markdown,         'filedata         -> html',    // using a sync function
