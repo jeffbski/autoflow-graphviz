@@ -1,8 +1,8 @@
-# react-graphviz
+# autoflow-graphviz
 
-react-graphviz is a plugin for react, the flow control rules engine, which can use graphviz to generate flow diagrams for the dependencies
+autoflow-graphviz is a plugin for autoflow, the flow control rules engine, which can use graphviz to generate flow diagrams for the dependencies
 
-For more information on `react` the lightweight flow control rules engine:  http://github.com/jeffbski/react
+For more information on `autoflow` the lightweight flow control rules engine:  http://github.com/jeffbski/autoflow
 
 ## Goals
 
@@ -16,7 +16,7 @@ Generate graphviz diagrams for flow definitions that:
 ## Prerequisites
 
  - Install graphviz on your system - http://www.graphviz.org/
- - React 0.5.2+ is needed because it exposes the events needed by react-graphviz
+ - React 0.5.2+ is needed because it exposes the events needed by autoflow-graphviz
 
 ## Installing
 
@@ -30,37 +30,37 @@ brew install graphviz  # mac OS X
 apt-get install graphviz  # ubuntu and debian linux
 ```
 
-This should put graphviz binaries on your path, react-graphviz uses `dot`, so make sure that `dot` is on your path, then you can install react-graphviz.
+This should put graphviz binaries on your path, autoflow-graphviz uses `dot`, so make sure that `dot` is on your path, then you can install autoflow-graphviz.
 
 
 ```bash
-    npm install react-graphviz   # install locally
+    npm install autoflow-graphviz   # install locally
 ```
 
 OR
 
 ```bash
-    npm install -g react-graphviz  # installs globally
+    npm install -g autoflow-graphviz  # installs globally
 ```
 
 OR
 
-Pull from github - http://github.com/jeffbski/react-graphviz
+Pull from github - http://github.com/jeffbski/autoflow-graphviz
 
 
 ## Example
 
 ```bash
 # if you installed locally
-node_modules/bin/react-graphviz JSFilePath
+node_modules/bin/autoflow-graphviz JSFilePath
 # OR if using globally
-react-graphviz JSFilePath
+autoflow-graphviz JSFilePath
 ```
 
 ## Usage
 
 ```
-  Usage: react-graphviz <JSPath ...> [options]
+  Usage: autoflow-graphviz <JSPath ...> [options]
 
   Options:
 
@@ -74,7 +74,7 @@ react-graphviz JSFilePath
 
 ## License
 
- - [MIT license](http://github.com/jeffbski/react-graphviz/raw/master/LICENSE)
+ - [MIT license](http://github.com/jeffbski/autoflow-graphviz/raw/master/LICENSE)
 
 ## Contributors
 
@@ -82,6 +82,6 @@ react-graphviz JSFilePath
 
 ## Contributing
 
- - Source code repository: http://github.com/jeffbski/react-graphviz
- - Ideas and pull requests are encouraged  - http://github.com/jeffbski/react-graphviz/issues
+ - Source code repository: http://github.com/jeffbski/autoflow-graphviz
+ - Ideas and pull requests are encouraged  - http://github.com/jeffbski/autoflow-graphviz/issues
  - You may contact me at @jeffbski or through github at http://github.com/jeffbski
