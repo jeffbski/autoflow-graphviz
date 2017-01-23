@@ -4,6 +4,12 @@ autoflow-graphviz is a plugin for autoflow, the flow control rules engine, which
 
 For more information on `autoflow` the lightweight flow control rules engine:  http://github.com/jeffbski/autoflow
 
+Note: This is NOT related to FaceBook's `flow` type system.
+
+## Project status - INACTIVE
+
+I am not currently working on autoflow or autoflow family projects. I am happy to accept contributors if further developement is needed.
+
 ## Goals
 
 Generate graphviz diagrams for flow definitions that:
@@ -12,11 +18,23 @@ Generate graphviz diagrams for flow definitions that:
  - show dependencies between inputs, outputs, and other preconditions
  - create PNG, PDF, GIF, or DOT files in a designated directory
 
+## Example
+
+```js
+// autoflow code
+var loadRender = autoflow('loadRender', 'fooPath, barPath, barP2, cb -> err, renderedOut',
+  loadFoo, 'fooPath, cb -> err, foo',    // async cb function
+  loadBar, 'barPath, barP2, cb -> err, bar',  // async cb function
+  render, 'foo, bar -> renderedOut'  // sync function using outputs from first two
+);
+```
+
+![simple-auto-flow-graphviz](https://cloud.githubusercontent.com/assets/5689/22215357/aebf11e2-e160-11e6-86ba-e14f9bfe2f7b.png)
 
 ## Prerequisites
 
  - Install graphviz on your system - http://www.graphviz.org/
- - React 0.5.2+ is needed because it exposes the events needed by autoflow-graphviz
+ - autoflow 0.5.2+ is needed because it exposes the events needed by autoflow-graphviz
 
 ## Installing
 
