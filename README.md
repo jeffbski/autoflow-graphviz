@@ -8,7 +8,7 @@ Note: This is NOT related to FaceBook's `flow` type system.
 
 ## Project status - INACTIVE
 
-I am not currently working on autoflow or autoflow family projects. I am happy to accept contributors if further developement is needed.
+I am not currently working on autoflow or autoflow family projects. I am happy to accept contributors if further development is needed.
 
 ## Goals
 
